@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Changed font */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; 
+    min-height: 100vh;
+    background-color: #dcdcdc; 
+    color: #444;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 20px; 
+    justify-content: space-around;
+    align-items: center;
+}
+
+.draggableContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px; 
+    padding: 10px; 
+    border: 1px solid #ccc;
+    border-radius: 8px; 
+    background-color: #fff; 
+    
+
+}
+
+.droppableContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 8px; 
+    background-color: #fff;
+}
+
+
+.box,
+.droppable {
+    background-color: #fcfbc2; 
+    height: 40px;
+    width: 180px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+    position: relative;
+    z-index: 2;
+    border-radius: 8px; 
+    margin-bottom: 15px; 
+    font-size: 18px; 
+    font-weight: bold;
+    color: #333;
+    border: 2px solid #ccc; 
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+    text-transform: capitalize;
+    padding: 10px;
+
+}
+
+
+.box:hover,
+.droppable:hover {
+    background-color: #ffa07a; 
+    border-color: #ff6347; /
+}
+
+.droppable {
+    background-color: #ffe4c4; 
+    border: 2px dashed #333; 
+    padding: 10px;
+}
+
+.draggableFormat {
+    font-weight: bold;
+    color: #FF4500; 
+    border: 3px dashed #fff;
+    padding: 8px; 
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#scoreSection {
+    z-index: 1;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px; 
+    background-color: #fff; 
+    border: 2px solid #ccc; 
+    border-radius: 5px; 
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+    color: #333; 
+}
+
+
+#remarksDiv {
+    text-align: center;
+    margin-top: 20px;
+    background-color: lightsalmon; 
+    border-radius: 8px; 
+    padding: 10px; 
+    width: 100px;
+    height: 60px; 
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    color: #333; 
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="draggableContainer">
+            <div class="box" draggable="true" id="drag1">7×4</div>
+        <div class="box" draggable="true" id="drag2">9×2</div>
+        <div class="box" draggable="true" id="drag3">5×8</div>
+        <div class="box" draggable="true" id="drag4">3×6</div>
+        <div class="box" draggable="true" id="drag5">12×7</div>
+        <div class="box" draggable="true" id="drag6">10×9</div>
+        <div class="box" draggable="true" id="drag7">4×5</div>
+        <div class="box" draggable="true" id="drag8">6×3</div>
+        <div class="box" draggable="true" id="drag9">8×11</div>
+        <div class="box" draggable="true" id="drag10">2×10</div>
+        <div class="box" draggable="true" id="drag11">9×3</div>
+        <div class="box" draggable="true" id="drag12">7×2</div>
+        <div class="box" draggable="true" id="drag13">11×4</div>
+        <div class="box" draggable="true" id="drag14">5×7</div>
+        <div class="box" draggable="true" id="drag15">12×5</div>
+        </div>
+
+        <div class="droppableContainer">
+            <div class="droppable" id="drop1" data-draggable-id="drop1">28</div>
+            <div class="droppable" id="drop2" data-draggable-id="drop2">18</div>
+            <div class="droppable" id="drop3" data-draggable-id="drop3">40</div>
+            <div class="droppable" id="drop4" data-draggable-id="drop4">18</div>
+            <div class="droppable" id="drop5" data-draggable-id="drop5">84</div>
+            <div class="droppable" id="drop6" data-draggable-id="drop6">90</div>
+            <div class="droppable" id="drop7" data-draggable-id="drop7">20</div>
+            <div class="droppable" id="drop8" data-draggable-id="drop8">18</div>
+            <div class="droppable" id="drop9" data-draggable-id="drop9">88</div>
+            <div class="droppable" id="drop10" data-draggable-id="drop10">20</div>
+            <div class="droppable" id="drop11" data-draggable-id="drop11">27</div>
+            <div class="droppable" id="drop12" data-draggable-id="drop12">14</div>
+            <div class="droppable" id="drop13" data-draggable-id="drop13">44</div>
+            <div class="droppable" id="drop14" data-draggable-id="drop14">35</div>
+            <div class="droppable" id="drop15" data-draggable-id="drop15">60</div>
+        </div>
+
+        <div id="remarksDiv"></div>
+    </div>
+
+    <div id="scoreSection">Score: <span id="scoreValue">0</span></div>
+
+    <script>
+        const draggableElement = document.querySelectorAll('.box');
+        const droppableElement = document.querySelectorAll('.droppable');
+        const remarksDiv = document.getElementById('remarksDiv');
+        let score = 0;
+
+        draggableElement.forEach(element => {
+            element.addEventListener('dragstart', (drgStrt) => {
+                drgStrt.dataTransfer.setData('text', drgStrt.target.id);
+                drgStrt.currentTarget.classList.add('draggableFormat');
+            });
+
+            element.addEventListener('dragend', (drgendEvt) => {
+                drgendEvt.currentTarget.classList.remove('draggableFormat');
+            });
+        });
+
+        droppableElement.forEach(element => {
+            element.addEventListener('dragover', (dragOver) => {
+                dragOver.preventDefault();
+            });
+
+            element.addEventListener('drop', (dropEvt) => {
+                dropEvt.preventDefault();
+                const droppedElementId = dropEvt.dataTransfer.getData('text');
+                const dropZoneId = dropEvt.target.getAttribute('data-draggable-id');
+                const droppedElement = document.getElementById(droppedElementId);
+
+                dropEvt.target.appendChild(droppedElement);
+
+                if (dropZoneId === droppedElementId.replace('drag', 'drop')) {
+                    score++;
+                    remarksDiv.innerText = 'Tama';
+                    scoreSection.innerText = `Score: ${score}`;
+                } else {
+                    remarksDiv.innerText = 'Mali';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
